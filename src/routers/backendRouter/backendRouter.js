@@ -4,5 +4,6 @@ import backendController from "../../controllers/backendContorllers/backendContr
 const backendRouter = Router();
 
 backendRouter.post("/notes/create", backendController.create);
+backendRouter.get("/notes/getnotes", backendController.get);
 
 export default backendRouter;

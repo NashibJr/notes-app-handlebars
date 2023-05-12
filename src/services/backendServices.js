@@ -11,6 +11,11 @@ const NotesService = {
     }
     return await Note.create(note);
   },
+
+  getNotes: async (number) => {
+    const notes = await Note.find({}).limit(number);
+    return notes;
+  },
 };
 
 export default NotesService;
