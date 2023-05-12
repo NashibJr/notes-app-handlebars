@@ -24,6 +24,20 @@ const backendController = {
       console.log(error);
     }
   },
+
+  getAll: async (req, resp, next) => {
+    try {
+      const data = await NotesService.getAllNotes();
+      return resp.status(200).json({
+        notes: data,
+      });
+    } catch (error) {
+      console.log(error);
+      return resp.status(500).json({
+        message: "internal server error",
+      });
+    }
+  },
 };
 
 export default backendController;

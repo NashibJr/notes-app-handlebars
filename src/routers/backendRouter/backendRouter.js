@@ -5,5 +5,6 @@ const backendRouter = Router();
 
 backendRouter.post("/notes/create", backendController.create);
 backendRouter.get("/notes/getnotes", backendController.get);
+backendRouter.get("/notes/getallnotes", backendController.getAll);
 
 export default backendRouter;

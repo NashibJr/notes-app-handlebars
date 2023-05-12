@@ -12,3 +12,12 @@
     </div>
   </div>
 </form>
+
+<div class="row mx-auto home-content">
+  {{#each notes}}
+    <div class="home">
+      <h2>{{. .title}}</h2>
+      <p>{{. .content}}</p>
+    </div>
+  {{/each}}
+</div>
