@@ -1,0 +1,19 @@
+.home-content {
+  display: flex; 
+  flex-wrap: wrap;
+  margin-top: 5vh;
+}
+
+.home {
+  border: 1px solid #555; 
+  width: 30%; 
+  padding: 10px; 
+  margin: 10px; 
+  border-radius: 10px;
+}
+
+.home:hover {
+  background-color: #fdfdfd;
+  box-shadow: 0 0 10px 0 #000;
+  border: none;
+}

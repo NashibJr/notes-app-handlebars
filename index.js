@@ -14,14 +14,9 @@ const main = async () => {
     mongoose.connect(process.env.DATABASE_URL).then(() => {
       app.engine("handlebars", engine());
       app.set("view engine", "handlebars");
+
       app.use(express.static("images"));
-
-      // app.use(Cors());
-      // app.use((req, resp, next) => {
-      //   req.header({ "Access-Control-Allow-Origin": "*" });
-      //   next();
-      // });
-
+      app.use(express.static("styles"));
       app.use(
         express.json(),
         express.urlencoded({ extended: false }),

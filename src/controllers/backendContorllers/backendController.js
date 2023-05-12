@@ -16,7 +16,7 @@ const backendController = {
 
   get: async (req, resp, next) => {
     try {
-      const data = await NotesService.getNotes(req.body.number);
+      const data = await NotesService.getNotes();
       return resp.status(200).json({
         notes: data,
       });

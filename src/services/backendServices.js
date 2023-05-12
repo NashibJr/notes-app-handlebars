@@ -12,9 +12,13 @@ const NotesService = {
     return await Note.create(note);
   },
 
-  getNotes: async (number) => {
-    const notes = await Note.find({}).limit(number);
+  getNotes: async () => {
+    const notes = await Note.find({}).limit(6);
     return notes;
+  },
+
+  getAllNotes: async () => {
+    return await Note.find({});
   },
 };
 

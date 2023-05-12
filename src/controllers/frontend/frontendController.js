@@ -1,7 +1,17 @@
 import client from "../../app/app.js";
 
 const FrontendController = {
-  home: (req, resp, next) => resp.render("home"),
+  home: async (req, resp, next) => {
+    let notes = [];
+    try {
+      const data = await client.get("/getnotes", { number: 4 });
+      notes = data.data.notes;
+    } catch (error) {
+      console.log(error);
+    }
+    resp.render("home", { notes: notes, styles: "home.css" });
+  },
+
   newNote: async (req, resp, next) => {
     let error, message;
     try {
