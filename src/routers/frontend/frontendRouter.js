@@ -7,4 +7,6 @@ frontendRouter.get("/", FrontendController.home);
 frontendRouter.get("/newnote", FrontendController.newNote);
 frontendRouter.get("/mynotes", FrontendController.myNotes);
 
+// frontendRouter.post("/newnote", FrontendController._newNotes);
+
 export default frontendRouter;
