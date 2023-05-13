@@ -2,6 +2,7 @@
   display: flex; 
   flex-wrap: wrap;
   margin-top: 5vh;
+  justify-content: flex-start;
 }
 
 .home {
@@ -16,4 +17,10 @@
   background-color: #fdfdfd;
   box-shadow: 0 0 10px 0 #000;
   border: none;
+}
+
+@media screen and (max-width: 770px) {
+  .home {
+    width: 100%;
+  }
 }

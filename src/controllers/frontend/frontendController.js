@@ -20,8 +20,12 @@ const FrontendController = {
         title: title,
         content: content,
       });
-      if (!data.data.note.message) {
-        message = `Note with <strong>${data.data.note.title}</strong> title is successfully created`;
+      if (!data.data.note?.message) {
+        if (!title) {
+          message = "";
+        } else {
+          message = `Note with <strong>${data.data.note?.title}</strong> title is successfully created`;
+        }
       } else {
         message = data.data.note.message;
       }
@@ -32,14 +36,28 @@ const FrontendController = {
   },
 
   myNotes: async (req, resp, next) => {
-    let notes = [];
-    try {
-      const data = await client.get("/getallnotes");
-      notes = data.data.notes;
-    } catch (error) {
-      console.log(error);
-    }
-    resp.render("mynotes", { notes: notes, styles: "home.css" });
+    let notes, searchedNotes;
+    const data = await client.get("/getallnotes");
+    notes = data?.data.notes;
+
+    const handleClick = {
+      handleSearch: () => {
+        if (req.query.note === "" || !req.query.note) {
+          searchedNotes = [];
+        } else {
+          searchedNotes = notes.filter((note) =>
+            note.title.includes(req.query.note)
+          );
+          console.log(searchedNotes);
+        }
+      },
+    };
+    resp.render("mynotes", {
+      notes: notes,
+      styles: "home.css",
+      search: handleClick.handleSearch(),
+      searchedNotes: searchedNotes,
+    });
   },
 };
 

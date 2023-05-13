@@ -4,7 +4,6 @@ import frontendRouter from "./src/routers/frontend/frontendRouter.js";
 import mongoose from "mongoose";
 import { config } from "dotenv";
 import backendRouter from "./src/routers/backendRouter/backendRouter.js";
-import Cors from "cors";
 
 config();
 
