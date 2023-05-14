@@ -65,6 +65,30 @@ const FrontendController = {
       value: req.query?.note,
     });
   },
+
+  singleNote: async (req, resp, next) => {
+    const { id } = req.params;
+    const data = await client.get(`/singlenote/${id}`);
+    const { note } = data.data;
+    resp.render("singlenotepage", {
+      note: note,
+    });
+  },
+
+  delete: async (req, resp, next) => {
+    const { id } = req.params;
+    let message;
+    const data = await client.delete(`/delete/${id}`);
+    if (data) {
+      message = data.data.message;
+    } else {
+      message = "an error has occured, failed to delete note!!!";
+    }
+    console.log(message);
+    resp.render("deleteNote", {
+      message: message,
+    });
+  },
 };
 
 export default FrontendController;

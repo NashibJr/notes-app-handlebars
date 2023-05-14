@@ -20,6 +20,13 @@ const NotesService = {
   getAllNotes: async () => {
     return await Note.find({});
   },
+
+  singleNote: async (noteId) => {
+    const note = await Note.findById(noteId);
+    return note;
+  },
+
+  deleteNote: async (noteId) => await Note.findByIdAndDelete(noteId),
 };
 
 export default NotesService;

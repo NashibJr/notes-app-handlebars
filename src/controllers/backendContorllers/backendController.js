@@ -38,6 +38,40 @@ const backendController = {
       });
     }
   },
+
+  singleNotePage: async (req, resp, next) => {
+    try {
+      const { id } = req.params;
+      const data = await NotesService.singleNote(id);
+      return resp.status(200).json({
+        note: data,
+      });
+    } catch (error) {
+      return resp.status(500).json({
+        message: error,
+      });
+    }
+  },
+
+  deleteNote: async (req, resp, next) => {
+    try {
+      const { id } = req.params;
+      const data = await NotesService.deleteNote(id);
+      if (data) {
+        return resp.status(201).json({
+          message: "successfully deleted",
+        });
+      } else {
+        return resp.status(500).json({
+          message: "Internal server error",
+        });
+      }
+    } catch (error) {
+      return resp.status(404).json({
+        message: "An error has occured!!!",
+      });
+    }
+  },
 };
 
 export default backendController;

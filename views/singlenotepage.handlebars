@@ -1,0 +1,15 @@
+<div class="conatiner">
+  <h2 class="mb-5">Note</h2>
+  {{#with note}}
+    <div class="row">
+      <h3>{{title}}</h3>
+    </div>
+    <div class="row" style="margin-left: 2px;">
+      {{content}}
+    </div>
+    <div class="mt-5">
+      <button type="button" class="btn btn-dark" onclick="window.location='/delete/{{. ._id}}'">Delete</button>
+      <button type="button" class="btn btn-dark">Edit</button>
+    </div>
+  {{/with}}
+</div>

@@ -24,7 +24,7 @@
     {{/unless}}
     <div class="home-content">
       {{#each notes}}
-        <div class="home">
+        <div class="home" onclick="window.location='/singlenotepage/{{. ._id}}'">
           <h1>{{. .title}}</h1>
           <p>{{. .content}}</p>
         </div>
