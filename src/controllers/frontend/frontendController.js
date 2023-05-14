@@ -42,13 +42,18 @@ const FrontendController = {
 
     const handleClick = {
       handleSearch: () => {
+        notes = notes.map((note) => {
+          return {
+            ...note,
+            title: note.title.toLowerCase(),
+          };
+        });
         if (req.query.note === "" || !req.query.note) {
-          searchedNotes = [];
+          searchedNotes = notes;
         } else {
           searchedNotes = notes.filter((note) =>
-            note.title.includes(req.query.note)
+            note.title.includes(req.query.note.toLowerCase())
           );
-          console.log(searchedNotes);
         }
       },
     };
@@ -57,6 +62,7 @@ const FrontendController = {
       styles: "home.css",
       search: handleClick.handleSearch(),
       searchedNotes: searchedNotes,
+      value: req.query?.note,
     });
   },
 };
